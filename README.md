@@ -16,7 +16,8 @@ audio slider so the soft volumes will have a larger area on the volume slider
 which gives more fine-grained control to the player.
 
 > Inspired by high-tide
-> Even though there player sucks :)
+
+> Even though their player sucks :)
 
 ## LICENSE
 
