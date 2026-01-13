@@ -4,6 +4,19 @@ A quadratic volume controller for the Apple Music volume slider.
 
 <img alt="Logo" src="https://i.imgur.com/EeUrCLL.png">
 
+## Download and Install
+
+This is a Mozilla-based extension and it can be [downloaded
+here](https://github.com/NeoSahadeo/Quad-Volume/releases/latest)
+
+#### Installing 3rd Party Extensions
+
+Before doing this, make sure you trust the extension you install.
+
+1. Navigate to `about:config`
+2. Turn of xpinstall.signatures.required
+3. Go to you extensions page and click on install from file
+
 ## Why does this exist?
 
 The normal volume slider for Apple Music is a linear step and the soft volumes,
