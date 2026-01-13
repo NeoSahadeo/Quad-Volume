@@ -28,7 +28,8 @@ function scanForAudio() {
 	if (audioElement) {
 		clearInterval(intervalId);
 		const elementClone = audioElement.cloneNode(true);
-		elementClone.step = 0.01;
+		audioElement.step = 0.001;
+		elementClone.step = 0.001;
 		elementClone.id = "QuadraticAudio";
 		audioElement.insertAdjacentElement("beforebegin", elementClone);
 		audioElement.style.display = "none";
