@@ -14,8 +14,8 @@ here](https://github.com/NeoSahadeo/Quad-Volume/releases/latest)
 Before doing this, make sure you trust the extension you install.
 
 1. Navigate to `about:config`
-2. Turn of xpinstall.signatures.required
-3. Go to you extensions page and click on install from file
+2. Turn off `xpinstall.signatures.required`
+3. Go to your extensions page and to install from the extension zip
 
 ## Why does this exist?
 
