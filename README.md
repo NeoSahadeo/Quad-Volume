@@ -9,6 +9,8 @@ A quadratic volume controller for the Apple Music volume slider.
 This is a Mozilla-based extension and it can be [downloaded
 here](https://github.com/NeoSahadeo/Quad-Volume/releases/latest)
 
+Or get it from the official Mozilla extensions store [here](https://addons.mozilla.org/en-GB/firefox/addon/quad-volume-for-apple-music/)
+
 #### Installing 3rd Party Extensions
 
 Before doing this, make sure you trust the extension you install.
