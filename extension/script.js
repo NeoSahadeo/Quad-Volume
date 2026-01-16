@@ -1,40 +1,93 @@
-let audioElement;
+let STATE = { VOLUME: 0 };
+let elementClones = [];
+let originalElements = [];
+let intervalId;
 
 function volumeChange(e) {
-	audioElement.value = parseFloat(e.target.value) ** 2;
-	audioElement.dispatchEvent(
-		new Event("input", { bubbles: true, composed: true }),
-	);
-	audioElement.dispatchEvent(
-		new Event("change", { bubbles: true, composed: true }),
-	);
-	e.target.setAttribute("style", `--progress:${e.target.value * 100}%;`);
+	STATE.VOLUME = e.target.value;
+	propagateState();
 }
 
 function findInShadows(selector, root = document) {
-	return (
-		root.querySelector(selector) ||
-		Array.from(root.querySelectorAll("*")).reduce(
-			(found, el) =>
-				found ||
-				(el.shadowRoot ? findInShadows(selector, el.shadowRoot) : null),
-			null,
-		)
-	);
+	const results = [];
+
+	// Collect direct matches in current root
+	Array.from(root.querySelectorAll(selector)).forEach((el) => results.push(el));
+
+	// Recurse into shadow roots of children
+	Array.from(root.querySelectorAll("*")).forEach((el) => {
+		if (el.shadowRoot) {
+			results.push(...findInShadows(selector, el.shadowRoot));
+		}
+	});
+
+	return results;
+}
+
+function propagateState() {
+	elementClones.forEach((p) => {
+		p.value = STATE.VOLUME;
+		p.setAttribute("style", `--progress:${STATE.VOLUME * 100}%;`);
+	});
+
+	originalElements.forEach((p) => {
+		p.value = parseFloat(STATE.VOLUME) ** 2;
+		p.dispatchEvent(new Event("input", { bubbles: true, composed: true }));
+		p.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
+	});
+}
+
+function clearStagnantElements() {
+	elementClones.forEach((e) => e.remove());
+	elementClones = [];
 }
 
 function scanForAudio() {
-	audioElement = findInShadows("input[type='range']");
-	if (audioElement) {
+	let audioElements = findInShadows("input[type='range']");
+
+	if (audioElements) {
 		clearInterval(intervalId);
-		const elementClone = audioElement.cloneNode(true);
-		audioElement.step = 0.001;
-		elementClone.step = 0.001;
-		elementClone.id = "QuadraticAudio";
-		audioElement.insertAdjacentElement("beforebegin", elementClone);
-		audioElement.style.display = "none";
-		elementClone.addEventListener("input", volumeChange);
+
+		audioElements = audioElements.filter((e) => {
+			if (e.getAttribute("aria-label") != "Volume") return false;
+			if (
+				e.nextElementSibling &&
+				e.nextElementSibling.classList.contains("__quad_volume")
+			)
+				return false;
+			if (
+				e.previousElementSibling &&
+				e.previousElementSibling.classList.contains("__quad_volume")
+			)
+				return false;
+			if (e.classList.contains("__quad_volume")) return;
+
+			return true;
+		});
+
+		console.log(originalElements);
+		audioElements.forEach((e) => {
+			const clone = e.cloneNode(true);
+			elementClones.push(clone);
+			originalElements.push(e);
+
+			e.step = 0.001;
+			clone.step = 0.001;
+			clone.classList.add("__quad_volume");
+			clone.style.display = "block";
+			e.style.display = "none";
+
+			clone.addEventListener("input", volumeChange);
+			e.insertAdjacentElement("beforebegin", clone);
+		});
+
+		propagateState();
 	}
 }
 
-const intervalId = setInterval(scanForAudio, 100);
+document.addEventListener("click", () => {
+	clearInterval(intervalId);
+	intervalId = setInterval(scanForAudio, 800);
+});
+
+intervalId = setInterval(scanForAudio, 800);
