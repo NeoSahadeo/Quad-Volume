@@ -65,7 +65,6 @@ function scanForAudio() {
 			return true;
 		});
 
-		console.log(originalElements);
 		audioElements.forEach((e) => {
 			const clone = e.cloneNode(true);
 			elementClones.push(clone);
@@ -87,7 +86,12 @@ function scanForAudio() {
 
 document.addEventListener("click", () => {
 	clearInterval(intervalId);
-	intervalId = setInterval(scanForAudio, 800);
+	intervalId = setInterval(scanForAudio, 100);
 });
 
-intervalId = setInterval(scanForAudio, 800);
+document.addEventListener("resize", () => {
+	clearInterval(intervalId);
+	intervalId = setInterval(scanForAudio, 100);
+});
+
+intervalId = setInterval(scanForAudio, 100);

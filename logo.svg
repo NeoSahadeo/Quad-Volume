@@ -11,6 +11,7 @@
    sodipodi:docname="logo.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -25,8 +26,8 @@
      inkscape:document-units="px"
      inkscape:clip-to-page="true"
      inkscape:zoom="0.84100811"
-     inkscape:cx="902.48832"
-     inkscape:cy="641.49203"
+     inkscape:cx="738.39954"
+     inkscape:cy="597.49721"
      inkscape:window-width="1920"
      inkscape:window-height="1045"
      inkscape:window-x="0"
@@ -34,18 +35,62 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <linearGradient
+       id="linearGradient6"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#7f7f7f;stop-opacity:1;"
+         offset="0"
+         id="stop7" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6"
+       id="linearGradient7"
+       x1="205.54239"
+       y1="96.628426"
+       x2="300.25537"
+       y2="188.80698"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99999879,0,0,1.0386461,3.0794842e-4,-5.5215649)" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#090909;fill-opacity:0.891754;fill-rule:evenodd;stroke-width:1.00012;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+       style="fill:url(#linearGradient7);fill-rule:evenodd;stroke-width:1.00012;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
        id="rect1"
-       width="95.656776"
-       height="92.09745"
-       x="206.96352"
-       y="95.81871"
-       ry="6.1868067" />
+       width="95.656662"
+       height="95.656654"
+       x="206.17166"
+       y="95.046669"
+       ry="0"
+       inkscape:export-filename="extension/logo.png"
+       inkscape:export-xdpi="33.988216"
+       inkscape:export-ydpi="33.988216" />
+    <g
+       fill="none"
+       stroke="currentColor"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       stroke-width="0.143566"
+       id="g2"
+       transform="matrix(3.6858863,0,0,3.6858863,213.45524,98.644361)"
+       style="stroke:#bababa;stroke-width:1.29209;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         d="m 3,17 a 3,3 0 1 0 6,0 3,3 0 0 0 -6,0 m 10,0 a 3,3 0 1 0 6,0 3,3 0 0 0 -6,0"
+         id="path1"
+         style="stroke:#bababa;stroke-width:1.29209;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="M 9,17 V 4 H 19 V 17 M 9,8 h 10"
+         id="path2"
+         style="stroke:#bababa;stroke-width:1.29209;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
   </g>
 </svg>
